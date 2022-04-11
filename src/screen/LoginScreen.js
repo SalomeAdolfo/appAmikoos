@@ -27,12 +27,16 @@ export default function logInScreen() {
         .then(res => res.json())
         .catch(error => console.log('Error: ' + error))
         .then(response => {
-          console.log('Success: ' + response['token']);
-          saveData(response['token']),
-          navigation.navigate('home')
+         
+            
+            console.log('Success: ' + response['token']);
+            alert('Bienvenida: ' + response['1']),
+            saveData(response['token']),
+            navigation.navigate('home')
+          
         });
     } catch (error) {
-      console.log(error);
+      alert('Credenciales incorrectas, inténtelo de nuevo')
     }
   
   };
