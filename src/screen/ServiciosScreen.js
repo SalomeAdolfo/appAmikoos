@@ -8,9 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import React from 'react';
-import {Card} from 'react-native-elements';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Card, Button} from 'react-native-elements';
 
 const data = [
   {
@@ -38,8 +36,6 @@ const data = [
       'https://dojiw2m9tvv09.cloudfront.net/25287/product/L_paciforgotas8566.jpg?145',
     title: 'Pacifor',
   },
-];
-const data2 = [
   {
     title: 'Dartacan',
     imagen:
@@ -59,8 +55,6 @@ const data2 = [
     title: 'Keiko',
     imagen: 'https://www.cadena3.com/admin/playerswf/fotos/ARCHI_783398.png',
   },
-];
-const data3 = [
   {
     title: 'Cama',
     imagen:
@@ -80,8 +74,6 @@ const data3 = [
     title: 'Platos',
     imagen: 'https://www.mercawise.com/files/polls/0576165392.jpg',
   },
-];
-const data4 = [
   {
     title: 'Arena para gato',
     imagen:
@@ -102,8 +94,6 @@ const data4 = [
     imagen:
       'https://images1.tiendanimal.pt/slide/500/12977__1-sanicat-arena-aglomerante-efecto-relax-para-gatos_2.jpg',
   },
-];
-const data5 = [
   {
     title: 'Categoria 1',
     imagen:
@@ -118,254 +108,39 @@ const data5 = [
     title: 'Categoria 3',
     imagen:
       'https://http2.mlstatic.com/placas-para-mascotas-de-aluminio-anodizado-para-grabar-D_NQ_NP_898693-MLM25901761488_082017-F.jpg',
-  },
-  {
-    title: 'Categoria 4',
-    imagen:
-      'https://http2.mlstatic.com/placas-para-mascotas-de-aluminio-anodizado-para-grabar-D_NQ_NP_898693-MLM25901761488_082017-F.jpg',
-  },
+  }
 ];
 const Item = ({title, imagen}) => (
   <View>
     <Card containerStyle={{borderRadius:15, elevation:10}}>
       <Card.Title>{title}</Card.Title>
       <Image source={{uri: imagen}} style={{...styles.image_category}} />
+      <Button type='outline' title={'Comprar'} buttonStyle={{...styles.button_card}} titleStyle={{...styles.button_text}} />
     </Card>
   </View>
 );
-const Stack = createNativeStackNavigator();
-
-//Menú
 
 function ServiciosScreen() {
-  const navigation = useNavigation();
+  const renderItem = ({item}) =>(
+    <Item title={item.title} imagen={item.imagen}/>
+  )
   return (
     <ScrollView>
       <View style={{...styles.main}}>
         <View style={{...styles.header}}>
-          <Text style={{...styles.text}}>Servicio</Text>
+          <Text style={{...styles.text}}>Productos</Text>
         </View>
-
-        <View style={{...styles.content}}>
-          <View style={{...styles.sections}}>
-            <View style={{...styles.cards_category}}>
-              <Card>
-                <Pressable onPress={() => navigation.navigate('Medicamentos')}>
-                  <Card.Image
-                    source={{
-                      uri: 'https://www.lpsagrofarma.com.br/imagens_sistema/f5d4570c16773e19f17c6e025295a13f.jpg',
-                    }}
-                    width={50}
-                    height={50}
-                  />
-                  <Text style={{...styles.text_cards}}>Medicamentos</Text>
-                </Pressable>
-              </Card>
-            </View>
-
-            <View style={{...styles.cards_category}}>
-              <Card>
-                <Pressable onPress={() => navigation.navigate('Alimentos')}>
-                  <Card.Image
-                    source={{
-                      uri: 'https://th.bing.com/th/id/R.6e4d9608a8058f03ee1e5bf1aa270a6f?rik=%2fwO3amCahZo4Ug&pid=ImgRaw&r=0',
-                    }}
-                    width={50}
-                    height={50}
-                  />
-                  <Text style={{...styles.text_cards}}>Alimento</Text>
-                </Pressable>
-              </Card>
-            </View>
-          </View>
-
-          <View style={{...styles.sections}}>
-            <View style={{...styles.cards_category}}>
-              <Card>
-                <Pressable onPress={() => navigation.navigate('Accesorios')}>
-                  <Card.Image
-                    source={{
-                      uri: 'https://th.bing.com/th/id/OIP.6_3QY2onpsC5MTA03Ek1KwHaHa?pid=ImgDet&rs=1',
-                    }}
-                    width={50}
-                    height={50}
-                  />
-                  <Text style={{...styles.text_cards}}>Accesorios</Text>
-                </Pressable>
-              </Card>
-            </View>
-
-            <View style={{...styles.cards_category}}>
-              <Card>
-                <Pressable onPress={() => navigation.navigate('Higiene')}>
-                  <Card.Image
-                    source={{
-                      uri: 'https://momosiempreamigos.com/wp-content/uploads/2019/06/higiene-bucal-mascotas.jpg',
-                    }}
-                    width={50}
-                    height={50}
-                  />
-                  <Text style={{...styles.text_cards}}>Higiene</Text>
-                </Pressable>
-              </Card>
-            </View>
-          </View>
-
-          <View style={{...styles.sections}}>
-            <View style={{...styles.cards_category}}>
-              <Card>
-                <Pressable onPress={() => navigation.navigate('Placas')}>
-                  <Card.Image
-                    source={{
-                      uri: 'https://chapasparaperros.com/images/stories/virtuemart/product/placas-para-mascotas-huella-roja.jpg',
-                    }}
-                    width={50}
-                    height={50}
-                  />
-                  <Text style={{...styles.text_cards}}>Placas</Text>
-                </Pressable>
-              </Card>
-            </View>
-
-            <View style={{...styles.cards_category}}>
-              <Card>
-                <Pressable onPress={() => navigation.navigate('Vacunas')}>
-                  <Card.Image
-                    source={{
-                      uri: 'https://th.bing.com/th/id/OIP.NEWiieF3Cz5M-qqAfb3a_wHaEd?pid=ImgDet&rs=1',
-                    }}
-                    width={50}
-                    height={50}
-                  />
-                  <Text style={{...styles.text_cards}}>Vacunas</Text>
-                </Pressable>
-              </Card>
-            </View>
-          </View>
-        </View>
+          <FlatList 
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.imagen}
+          />
         <View style={{height: 100}} />
       </View>
     </ScrollView>
   );
 }
-
-function medicamentosSreen({navigation}) {
-  const renderItem = ({item}) => (
-    <Item title={item.title} imagen={item.imagen} />
-  );
-  return (
-    <ScrollView>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.imagen}
-      />
-      <View style={{height: 100}}></View>
-    </ScrollView>
-  );
-}
-function AlimentosScreen({navigation}) {
-  const renderItem = ({item}) => (
-    <Item title={item.title} imagen={item.imagen} />
-  );
-  return (
-    <ScrollView>
-      <FlatList
-        data={data2}
-        renderItem={renderItem}
-        keyExtractor={item => item.imagen}
-      />
-      <View style={{height: 100}}></View>
-    </ScrollView>
-  );
-}
-function AccesoriosScreen({navigation}) {
-  const renderItem = ({item}) => (
-    <Item title={item.title} imagen={item.imagen} />
-  );
-  return (
-    <ScrollView>
-      <FlatList
-        data={data3}
-        renderItem={renderItem}
-        keyExtractor={item => item.imagen}
-      />
-      <View style={{height: 100}}></View>
-    </ScrollView>
-  );
-}
-function HigieneScreen({navigation}) {
-  const renderItem = ({item}) => (
-    <Item title={item.title} imagen={item.imagen} />
-  );
-  return (
-    <ScrollView>
-      <FlatList
-        data={data4}
-        renderItem={renderItem}
-        keyExtractor={item => item.imagen}
-      />
-      <View style={{height: 100}}></View>
-    </ScrollView>
-  );
-}
-function PlacasScreen({navigation}) {
-  const renderItem = ({item}) => (
-    <Item title={item.title} imagen={item.imagen} />
-  );
-  return (
-    <ScrollView>
-      <FlatList
-        data={data5}
-        renderItem={renderItem}
-        keyExtractor={item => item.imagen}
-      />
-      <View style={{height: 100}}></View>
-    </ScrollView>
-  );
-}
-function VacunasScreen({navigation}) {
-  const renderItem = ({item}) => (
-    <Item title={item.title} imagen={item.imagen} />
-  );
-  return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        backgroundColor: 'white',
-      }}>
-      <Image
-        source={{
-          uri: 'https://th.bing.com/th/id/OIP.yPBoiPYoo8Lt8SrHCD8phgHaH0?pid=ImgDet&rs=1',
-        }}
-        style={{width: 200, height: 200}}
-      />
-    </View>
-  );
-}
-function App() {
-  return (
-    <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Main" screenOptions={{}}>
-        <Stack.Screen
-          name="Main"
-          component={ServiciosScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen name="Medicamentos" component={medicamentosSreen} />
-        <Stack.Screen name="Alimentos" component={AlimentosScreen} />
-        <Stack.Screen name="Accesorios" component={AccesoriosScreen} />
-        <Stack.Screen name="Higiene" component={HigieneScreen} />
-        <Stack.Screen name="Placas" component={PlacasScreen} />
-        <Stack.Screen name="Vacunas" component={VacunasScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-export default App;
+export default ServiciosScreen;
 const styles = StyleSheet.create({
   image_category: {
     width: 200,
@@ -418,4 +193,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 15,
   },
+  button_card:{
+    marginVertical: 10,
+    borderColor: 'red',
+    borderRadius: 10
+ },
+ button_text:{
+  color:'green',
+  fontWeight: '200'
+ }
 });
